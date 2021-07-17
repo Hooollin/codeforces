@@ -1,20 +1,21 @@
-#include <algorithm>
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
+
 const int maxn = 2e5 + 50;
 int a[maxn], b[maxn];
-
-
 bool valid(int K, int n){
     int now = 0;
     for(int i = 0; i < n; i++){
         if(a[i] > K){
             now += b[i];
+
         }
         if(now > K) return false;
+
     }
     return true;
+
 }
 
 int main(){
@@ -34,11 +35,16 @@ int main(){
             if(valid(K, n)){
                 ans = K;
                 r = K - 1;
+
             }else{
                 l = K + 1;
+
             }
+
         }
         cout << ans << endl;
+
     }
     return 0;
+
 }

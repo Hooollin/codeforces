@@ -1,53 +1,35 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 const int maxn = 3e5 + 50;
-
-int pre[maxn], suf[maxn];
-int arr[maxn];
-
-/*
-    [1, 2, 1]
-    [1, 1, 1]
-    [1, 5, 1]
-    [11, 7, 8, 8, 9, 8, 8, 6, 8]
-    [6, 6, 6, 8, inf]
-    [1,1,5]
-    [3,2,1,2,1,3,4,5]
-    [1,1,1]
-    [6, 1, 1, 6, 3, 1, 6]
-*/
-
-const int inf = 1e8 + 50;
+const int inf = 1e7;
+int v[maxn];
 
 int main(){
-    ios::sync_with_stdio(false);
+    ios::sync_with_stdio(0);
     cin.tie(0);
+    cout.tie(0);
+
     int T;
     cin >> T;
     while(T-- > 0){
-        int n;
-        cin >> n;
-        pre[0] = inf;
-        for(int i = 0; i < n; i++){
-            cin >> arr[i];
-            pre[i + 1] = min(pre[i], arr[i]);
+        int n, k;
+        cin >> n >> k;
+        v[0] = k;
+        for(int i = 1; i < n; i++){
+            cin >> v[i];
         }
-        suf[n] = inf;
-        for(int i = n - 1; i >= 0; i--){
-            suf[i] = min(suf[i + 1], arr[i]);
-        }
-
-        bool ans = true;
-        for(int i = 1; i <= n; i++){
-            if(pre[i - 1] + suf[i] < arr[i - 1]){
-                //cout << pre[i] << " " << suf[i] << endl;
-                ans = false;
-                break;
+        bool f = true;
+        for(int i = 1; i < n; i++){
+            if(v[i] < v[i - 1]){
+                if(k < v[i - 1] - v[i]){
+                    f = false;
+                    break;
+                }
+                k -= v[i - 1] - v[i];
             }
         }
-        cout << (ans ? "Yes" : "No") << endl;
+        cout << (f? "YES" : "NO") << endl;
     }
     return 0;
 }
