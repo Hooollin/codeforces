@@ -4,3 +4,4 @@
 *.vsocode
 in
 out
+.DS_*
