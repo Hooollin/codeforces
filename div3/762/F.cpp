@@ -10,40 +10,25 @@ void solve(){
   int x = n % m;
   if(x == 0) x = m;
   int p = (n + m - 1) / m;
-  int tot = p * x * k;
-  int v = tot / n, extra = tot - n * v;
   //cout << x << " " << v << " " << extra << endl;
   //exit(-1);
 
-  priority_queue<pair<int, int>, vector<pair<int, int>>, less<pair<int, int>>> q;
-  for(int i = 1; i <= extra; i++){
-    q.push({v + 1, i});
-  }
-  for(int i = extra + 1; i <= n; i++){
-    if(v > 0) q.push({v, i});
-  }
-  
-  while(!q.empty()){
-    vector<int> used(n + 1);
+  int b = 0;
+  for(int round = 0; round < k; round++){
     for(int l = 0; l < x; l++){
       cout << p << " ";
       for(int i = 0; i < p; i++){
-        auto [freq, now] = q.top(); q.pop();
-        //cout << freq << " " << now << endl;
-        used[now] = 1;
-        if(freq > 1){
-          q.push({now, freq - 1});
-        }
-        cout << now << " "; 
+        cout << (i + b) % n + 1 << " ";
       }
+      b += p;
+      b %= n;
       cout << endl;
     }
     for(int i = 0; i < m - x; i++){
-      cout << (n / m) << " ";
-      for(int i = 1; i <= n; i++){
-        if(!used[i]){
-          cout << i << " ";
-        }
+      int small = n / m;
+      cout << small << " ";
+      for(int j = 0; j < small; j++){
+        cout << ((b + j + i * small) % n + 1) << " ";
       }
       cout << endl;
     }
