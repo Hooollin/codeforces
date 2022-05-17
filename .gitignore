@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-*.exe
-*.out
-*.swp
-*.vsocode
-=======
 *.exe
 *.out
 *.swp
@@ -11,4 +5,3 @@
 in
 out
 .DS_*
->>>>>>> 0306cf749d85140457a030b2b028d8a17a974423
