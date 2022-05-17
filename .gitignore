@@ -1,7 +1,7 @@
 *.exe
 *.out
 *.swp
-*.vsocode
+*.vscode
 in
 out
 .DS_*
