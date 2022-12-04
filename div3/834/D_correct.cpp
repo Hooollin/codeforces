@@ -3,7 +3,7 @@
 using namespace std;
 
 void solve() {
-  int n, m;
+  long long n, m;
   cin >> n >> m;
 
   auto num_factors = [](int n, int f) {
@@ -16,7 +16,7 @@ void solve() {
   };
   int T = num_factors(n, 2), F = num_factors(n, 5);
 
-  int k = 1;
+  long long k = 1;
   while(T < F && k * 2 <= m) {
     ++T;
     k *= 2;
