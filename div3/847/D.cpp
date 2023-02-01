@@ -23,12 +23,10 @@ void solve() {
       if(now > count) {
         ans += now - count;
       }
-      now = count;
     }else {
       ans += now;
-      prev = curr;
-      now = count;
     }
+    now = count;
     prev = curr;
   }
   cout << ans << endl;
