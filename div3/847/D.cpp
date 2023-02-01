@@ -17,8 +17,7 @@ void solve() {
   mp[1000000005] = 0;
   int ans = 0;
   int prev = -1, now = 0;
-  for(auto &p : mp) {
-    int curr = p.first, count = p.second;
+  for(auto &[curr, count] : mp) {
     if(prev == curr - 1) {
       if(now > count) {
         ans += now - count;
